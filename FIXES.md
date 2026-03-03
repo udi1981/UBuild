@@ -8,7 +8,17 @@
 
 ## Drizzle ORM
 
-*(No fixes yet — will be populated during development)*
+- **Issue:** Better Auth v1.5.2 requires drizzle-orm >= 0.41.0, project had 0.38.4
+  **Fix:** Upgraded drizzle-orm to 0.45.1 and drizzle-kit to 0.31.9
+  **Root cause:** Initial setup used older Drizzle version
+  **Date:** 2026-03-03
+
+## Better Auth
+
+- **Issue:** `advanced.generateId` causes TS error `'generateId' does not exist in type 'BetterAuthAdvancedOptions'`
+  **Fix:** Correct path is `advanced.database.generateId: false` (nested under `database`)
+  **Root cause:** Better Auth docs may show shorthand but the actual type nests it under `advanced.database`
+  **Date:** 2026-03-03
 
 ## Next.js App Router
 

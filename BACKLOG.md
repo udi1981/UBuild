@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03
+> Last updated: 2026-03-03 (Phase 1.1.2 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -17,13 +17,14 @@
 - **Acceptance:** `pnpm dev` starts all 3 apps, `pnpm build` succeeds
 - **Completed:** 2026-03-03
 
-### [TODO] 1.0.2 — Docker Compose
+### [DONE] 1.0.2 — Docker Compose ✅
 - Priority: **HIGH**
 - PostgreSQL 16 + Redis 7 + Meilisearch
 - Volumes for data persistence
 - Health checks
 - `.env.example` with all required vars
 - **Acceptance:** `docker compose up` → all services healthy
+- **Completed:** 2026-03-03
 
 ### [DONE] 1.0.3 — Shared Config ✅
 - Priority: **HIGH**
@@ -50,16 +51,19 @@
 - **Acceptance:** `pnpm db:push` creates all tables, `pnpm db:studio` shows them
 - **Completed:** 2026-03-03 (build verified, db:push/studio require DATABASE_URL)
 
-### [TODO] 1.1.2 — Auth System
+### [DONE] 1.1.2 — Auth System ✅
 - Priority: **CRITICAL**
-- Install Better Auth in apps/api
+- Better Auth v1.5.2 in apps/api + apps/web
 - Email + password login/register
 - Google OAuth
-- Magic link login
-- JWT tokens, refresh tokens
-- Protected routes middleware
-- User session management
-- **Files:** apps/api/services/auth.service.ts, apps/api/middleware/auth.ts
+- Magic link login (plugin)
+- Cookie-based sessions with 7-day expiry + 5-min cache
+- Protected routes middleware (requireAuth + optionalAuth)
+- Auth schema: sessions, accounts, verifications tables in packages/db
+- Next.js rewrite proxy for /api/auth/* → API server (no cross-origin cookie issues)
+- Drizzle ORM upgraded to v0.45.1 for Better Auth compatibility
+- **Files:** apps/api/src/lib/auth.ts, apps/api/src/middleware/auth.ts, apps/api/src/lib/app.ts, apps/web/src/lib/auth-client.ts
+- **Completed:** 2026-03-03 (build verified)
 
 ### [TODO] 1.1.3 — Auth UI Pages
 - Priority: **CRITICAL**

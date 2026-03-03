@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/turbo/bin/turbo", "dev", "--filter", "@ubuilder/web"],
+      "port": 3001
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/turbo/bin/turbo", "dev", "--filter", "@ubuilder/api"],
+      "port": 8787
+    },
+    {
+      "name": "renderer",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/turbo/bin/turbo", "dev", "--filter", "@ubuilder/renderer"],
+      "port": 3002
+    }
+  ]
+}
