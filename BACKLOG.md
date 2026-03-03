@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.1.2 completed)
+> Last updated: 2026-03-03 (Phase 1.1.3 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -65,15 +65,17 @@
 - **Files:** apps/api/src/lib/auth.ts, apps/api/src/middleware/auth.ts, apps/api/src/lib/app.ts, apps/web/src/lib/auth-client.ts
 - **Completed:** 2026-03-03 (build verified)
 
-### [TODO] 1.1.3 — Auth UI Pages
+### [DONE] 1.1.3 — Auth UI Pages ✅
 - Priority: **CRITICAL**
-- Login page (email + Google + magic link)
-- Register page
-- Forgot password page
+- Shared UI components in packages/ui: Button, Input, Card, Alert, Separator, Spinner
+- Login page with email/password, Google OAuth, and magic link (Hebrew RTL)
+- Register page with name/email/password/confirm + Google OAuth
+- Forgot password page with magic link + success state
+- Auth layout with centered card + branding
 - Mobile-first, RTL, dark theme
-- Form validation with Zod
-- Error/success states
-- **Files:** apps/web/app/(auth)/login/page.tsx, register/page.tsx, forgot/page.tsx
+- Error/success states with Alert component
+- **Files:** packages/ui/src/{button,input,card,alert,separator,spinner}.tsx, apps/web/src/app/(auth)/layout.tsx, login/page.tsx, register/page.tsx, forgot/page.tsx
+- **Completed:** 2026-03-03 (build verified)
 
 ---
 

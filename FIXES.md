@@ -22,7 +22,10 @@
 
 ## Next.js App Router
 
-*(No fixes yet)*
+- **Issue:** Better Auth client with `baseURL: "/"` throws `BetterAuthError: Invalid base URL: /` during Next.js SSG prerendering
+  **Fix:** Use absolute URL: `baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001"`
+  **Root cause:** Relative URLs can't be resolved during SSG (no server context). `createAuthClient` needs an absolute URL.
+  **Date:** 2026-03-03
 
 ## Tailwind CSS
 
