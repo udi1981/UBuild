@@ -13,5 +13,6 @@ export { Sidebar } from "./sidebar";
 export { Header } from "./header";
 export { TabBar } from "./tab-bar";
 export { Breadcrumbs } from "./breadcrumbs";
+export { StatCard } from "./stat-card";
 
 export type { NavItem } from "./sidebar";

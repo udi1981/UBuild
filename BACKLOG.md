@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.2.1 completed)
+> Last updated: 2026-03-03 (Phase 1.2.2 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -96,14 +96,17 @@
 - **Files:** packages/ui/src/{avatar,sidebar,header,tab-bar,breadcrumbs}.tsx, apps/web/src/app/(dashboard)/layout.tsx, apps/web/src/app/(dashboard)/page.tsx
 - **Completed:** 2026-03-03 (build verified)
 
-### [TODO] 1.2.2 — Dashboard Home Page
+### [DONE] 1.2.2 — Dashboard Home Page ✅
 - Priority: **HIGH**
-- Stats cards: revenue, visitors, orders, conversion rate
-- Quick action buttons: edit site, new product, new post, ask AI
-- Recent orders list
-- Mini chart (revenue last 30 days)
-- Mobile: stacked layout, horizontal scroll for quick actions
-- **Files:** apps/web/app/(dashboard)/page.tsx
+- StatCard reusable component in packages/ui (icon, value, trend indicator)
+- 4 stat cards: revenue (₪12,450), visitors (1,284), orders (64), conversion (4.98%)
+- Quick action buttons: edit site, new product, new post, ask AI (horizontal scroll mobile)
+- Revenue sparkline SVG chart (30-day data, gradient fill)
+- Recent orders table (desktop) / card list (mobile) with status badges
+- Mock data with realistic Hebrew content
+- Mobile-first: 2-col stats grid → 4-col on lg:, stacked layout
+- **Files:** packages/ui/src/stat-card.tsx, apps/web/src/app/(dashboard)/page.tsx
+- **Completed:** 2026-03-03 (build verified)
 
 ### [TODO] 1.2.3 — Sites Management
 - Priority: **HIGH**
