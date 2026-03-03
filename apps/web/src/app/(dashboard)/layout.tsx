@@ -37,6 +37,7 @@ const tabItems = [
 const pathLabels: Record<string, string> = {
   "/": "ראשי",
   "/sites": "אתרים",
+  "/sites/new": "אתר חדש",
   "/pages": "עמודים",
   "/commerce": "חנות",
   "/analytics": "אנליטיקס",

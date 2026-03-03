@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serve } from "@hono/node-server";
 import { auth } from "./lib/auth";
+import { sitesRoutes } from "./routes/sites.routes";
 
 const app = new Hono();
 
@@ -25,6 +26,9 @@ app.use("/*", cors());
 app.on(["POST", "GET"], "/api/auth/**", (c) => {
   return auth.handler(c.req.raw);
 });
+
+// Mount resource routes
+app.route("/api/sites", sitesRoutes);
 
 app.get("/", (c) => {
   return c.json({ message: "UBuilder AI API", status: "ok" });

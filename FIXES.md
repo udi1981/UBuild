@@ -40,7 +40,10 @@
 
 ## Hono API
 
-*(No fixes yet)*
+- **Issue:** `apps/api/src/services/sites.service.ts` importing from `drizzle-orm` directly fails with `Cannot find module 'drizzle-orm'`
+  **Fix:** Add `"drizzle-orm": "^0.45.1"` to `apps/api/package.json` dependencies
+  **Root cause:** `drizzle-orm` was only a dependency of `@ubuilder/db`, not `apps/api`. Service files importing operators (`eq`, `and`, `isNull`, `desc`) directly need the package as a direct dependency.
+  **Date:** 2026-03-03
 
 ## AI Integration
 

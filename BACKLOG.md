@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.2.2 completed)
+> Last updated: 2026-03-03 (Phase 1.2.3 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -108,14 +108,19 @@
 - **Files:** packages/ui/src/stat-card.tsx, apps/web/src/app/(dashboard)/page.tsx
 - **Completed:** 2026-03-03 (build verified)
 
-### [TODO] 1.2.3 — Sites Management
+### [DONE] 1.2.3 — Sites Management ✅
 - Priority: **HIGH**
-- Sites list page (cards on mobile, grid on desktop)
-- Create new site: name, template selection
-- Site settings page: name, domain, favicon, SEO defaults
-- Delete site (soft delete)
-- API routes: GET/POST/PATCH/DELETE /api/sites
-- **Files:** apps/web/app/(dashboard)/sites/, apps/api/routes/sites.routes.ts
+- Sites service layer with CRUD operations (list, get, create, update, soft-delete)
+- API routes: GET/POST/PATCH/DELETE /api/sites with auth middleware
+- Next.js proxy updated to forward all /api/* routes to Hono backend
+- Sites list page: grid layout (1/2/3 cols), status badges, language badge, delete
+- Create site page: name, description, language selector form
+- Site settings page: edit name/description/language/domain, danger zone with delete
+- Mock data fallback when API unavailable
+- RTL, dark theme, mobile-first responsive
+- Added drizzle-orm dependency to apps/api
+- **Files:** apps/api/src/services/sites.service.ts, apps/api/src/routes/sites.routes.ts, apps/api/src/index.ts, apps/web/next.config.ts, apps/web/src/app/(dashboard)/sites/page.tsx, sites/new/page.tsx, sites/[id]/settings/page.tsx
+- **Completed:** 2026-03-03 (build verified)
 
 ---
 

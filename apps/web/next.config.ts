@@ -5,12 +5,13 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@ubuilder/ui", "@ubuilder/types", "@ubuilder/utils"],
   outputFileTracingRoot: path.join(import.meta.dirname, "../../"),
 
-  /** Proxy auth requests to the API server to avoid cross-origin cookie issues */
+  /** Proxy all API requests to the Hono backend */
   async rewrites() {
+    const apiUrl = process.env.API_URL || "http://localhost:8787";
     return [
       {
-        source: "/api/auth/:path*",
-        destination: `${process.env.API_URL || "http://localhost:8787"}/api/auth/:path*`,
+        source: "/api/:path*",
+        destination: `${apiUrl}/api/:path*`,
       },
     ];
   },
