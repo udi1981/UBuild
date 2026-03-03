@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@ubuilder/config/tailwind";
+@import "@ubuilder/config/tailwind/base";
+
+/* Scan UI package for Tailwind class usage */
+@source "../../../../packages/ui/src";

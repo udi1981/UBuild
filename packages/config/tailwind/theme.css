@@ -1,0 +1,200 @@
+/*
+ * UBuilder AI — Shared Tailwind Theme
+ * Design tokens for the entire platform.
+ * Dark theme is the default; add class="light" to <html> for light mode.
+ */
+
+/* ============================================
+   Custom variant: class-based dark mode
+   ============================================ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   Semantic color variables (CSS custom properties)
+   Dark theme values are the :root default.
+   ============================================ */
+:root {
+  /* --- Background / Surface --- */
+  --ub-bg: oklch(0.145 0.015 285);
+  --ub-bg-subtle: oklch(0.18 0.015 285);
+  --ub-bg-muted: oklch(0.22 0.015 285);
+  --ub-bg-elevated: oklch(0.26 0.015 285);
+
+  /* --- Foreground / Text --- */
+  --ub-fg: oklch(0.97 0.005 285);
+  --ub-fg-muted: oklch(0.7 0.01 285);
+  --ub-fg-subtle: oklch(0.5 0.01 285);
+
+  /* --- Border --- */
+  --ub-border: oklch(0.3 0.015 285);
+  --ub-border-muted: oklch(0.25 0.015 285);
+
+  /* --- Primary (brand accent — blue-violet) --- */
+  --ub-primary: oklch(0.65 0.2 260);
+  --ub-primary-hover: oklch(0.6 0.22 260);
+  --ub-primary-fg: oklch(0.98 0 0);
+
+  /* --- Secondary --- */
+  --ub-secondary: oklch(0.3 0.02 285);
+  --ub-secondary-hover: oklch(0.35 0.02 285);
+  --ub-secondary-fg: oklch(0.95 0 0);
+
+  /* --- Accent (teal/green) --- */
+  --ub-accent: oklch(0.75 0.18 170);
+  --ub-accent-hover: oklch(0.7 0.2 170);
+  --ub-accent-fg: oklch(0.15 0 0);
+
+  /* --- Destructive / Error --- */
+  --ub-error: oklch(0.65 0.22 25);
+  --ub-error-hover: oklch(0.6 0.24 25);
+  --ub-error-fg: oklch(0.98 0 0);
+
+  /* --- Warning --- */
+  --ub-warning: oklch(0.75 0.18 85);
+  --ub-warning-hover: oklch(0.7 0.2 85);
+  --ub-warning-fg: oklch(0.15 0 0);
+
+  /* --- Success --- */
+  --ub-success: oklch(0.7 0.2 145);
+  --ub-success-hover: oklch(0.65 0.22 145);
+  --ub-success-fg: oklch(0.98 0 0);
+
+  /* --- Ring / Focus --- */
+  --ub-ring: oklch(0.65 0.2 260);
+}
+
+/* ============================================
+   Light theme overrides
+   ============================================ */
+.light {
+  --ub-bg: oklch(0.99 0.005 285);
+  --ub-bg-subtle: oklch(0.97 0.005 285);
+  --ub-bg-muted: oklch(0.94 0.005 285);
+  --ub-bg-elevated: oklch(1 0 0);
+
+  --ub-fg: oklch(0.15 0.015 285);
+  --ub-fg-muted: oklch(0.4 0.01 285);
+  --ub-fg-subtle: oklch(0.6 0.01 285);
+
+  --ub-border: oklch(0.85 0.005 285);
+  --ub-border-muted: oklch(0.9 0.005 285);
+
+  --ub-primary: oklch(0.55 0.22 260);
+  --ub-primary-hover: oklch(0.5 0.24 260);
+  --ub-primary-fg: oklch(0.98 0 0);
+
+  --ub-secondary: oklch(0.93 0.005 285);
+  --ub-secondary-hover: oklch(0.9 0.005 285);
+  --ub-secondary-fg: oklch(0.15 0 0);
+
+  --ub-accent: oklch(0.65 0.2 170);
+  --ub-accent-hover: oklch(0.6 0.22 170);
+  --ub-accent-fg: oklch(0.98 0 0);
+
+  --ub-error: oklch(0.55 0.24 25);
+  --ub-error-hover: oklch(0.5 0.26 25);
+  --ub-error-fg: oklch(0.98 0 0);
+
+  --ub-warning: oklch(0.7 0.2 85);
+  --ub-warning-hover: oklch(0.65 0.22 85);
+  --ub-warning-fg: oklch(0.15 0 0);
+
+  --ub-success: oklch(0.6 0.22 145);
+  --ub-success-hover: oklch(0.55 0.24 145);
+  --ub-success-fg: oklch(0.98 0 0);
+
+  --ub-ring: oklch(0.55 0.22 260);
+}
+
+/* ============================================
+   Tailwind @theme — Semantic Color Tokens
+   Uses `inline` so utilities resolve to the
+   CSS variables at runtime (enabling live switching).
+   ============================================ */
+@theme inline {
+  --color-bg: var(--ub-bg);
+  --color-bg-subtle: var(--ub-bg-subtle);
+  --color-bg-muted: var(--ub-bg-muted);
+  --color-bg-elevated: var(--ub-bg-elevated);
+
+  --color-fg: var(--ub-fg);
+  --color-fg-muted: var(--ub-fg-muted);
+  --color-fg-subtle: var(--ub-fg-subtle);
+
+  --color-border: var(--ub-border);
+  --color-border-muted: var(--ub-border-muted);
+
+  --color-primary: var(--ub-primary);
+  --color-primary-hover: var(--ub-primary-hover);
+  --color-primary-fg: var(--ub-primary-fg);
+
+  --color-secondary: var(--ub-secondary);
+  --color-secondary-hover: var(--ub-secondary-hover);
+  --color-secondary-fg: var(--ub-secondary-fg);
+
+  --color-accent: var(--ub-accent);
+  --color-accent-hover: var(--ub-accent-hover);
+  --color-accent-fg: var(--ub-accent-fg);
+
+  --color-error: var(--ub-error);
+  --color-error-hover: var(--ub-error-hover);
+  --color-error-fg: var(--ub-error-fg);
+
+  --color-warning: var(--ub-warning);
+  --color-warning-hover: var(--ub-warning-hover);
+  --color-warning-fg: var(--ub-warning-fg);
+
+  --color-success: var(--ub-success);
+  --color-success-hover: var(--ub-success-hover);
+  --color-success-fg: var(--ub-success-fg);
+
+  --color-ring: var(--ub-ring);
+}
+
+/* ============================================
+   Tailwind @theme — Static Design Tokens
+   (fonts, radius, shadows, animations)
+   ============================================ */
+@theme {
+  /* --- Typography --- */
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-hebrew: "Heebo", "Rubik", "Inter", system-ui, sans-serif;
+
+  /* --- Border Radius --- */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* --- Shadows (dark-theme appropriate) --- */
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.4), 0 1px 2px -1px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.4), 0 2px 4px -2px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.4), 0 4px 6px -4px oklch(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.5), 0 8px 10px -6px oklch(0 0 0 / 0.5);
+
+  /* --- Animations --- */
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-slide-down: slide-down 0.3s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(0.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-0.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

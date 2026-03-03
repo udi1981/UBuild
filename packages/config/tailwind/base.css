@@ -1,0 +1,35 @@
+/*
+ * UBuilder AI — Base Styles
+ * Applied after Tailwind's preflight/base.
+ */
+@layer base {
+  body {
+    background-color: var(--ub-bg);
+    color: var(--ub-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* RTL-specific: ensure consistent text alignment */
+  [dir="rtl"] body {
+    text-align: right;
+  }
+
+  /* Focus ring style */
+  :focus-visible {
+    outline: 2px solid var(--ub-ring);
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: var(--ub-primary);
+    color: var(--ub-primary-fg);
+  }
+}

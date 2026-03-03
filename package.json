@@ -1,0 +1,21 @@
+{
+  "name": "ubuilder-ai",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "db:push": "pnpm --filter @ubuilder/db db:push",
+    "db:studio": "pnpm --filter @ubuilder/db db:studio",
+    "db:generate": "pnpm --filter @ubuilder/db db:generate",
+    "db:migrate": "pnpm --filter @ubuilder/db db:migrate"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
+  }
+}
