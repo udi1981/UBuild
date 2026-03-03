@@ -27,6 +27,13 @@
   **Root cause:** Relative URLs can't be resolved during SSG (no server context). `createAuthClient` needs an absolute URL.
   **Date:** 2026-03-03
 
+## TypeScript / Build
+
+- **Issue:** `packages/ui` components using `document`, `KeyboardEvent` etc. fail to compile with `Cannot find name 'document'`
+  **Fix:** Add `"lib": ["ES2022", "DOM", "DOM.Iterable"]` to `packages/ui/tsconfig.json` to override the library-only config
+  **Root cause:** `packages/config/tsconfig/library.json` only includes `ES2022` (no DOM). UI components are client-side React and need DOM types.
+  **Date:** 2026-03-03
+
 ## Tailwind CSS
 
 *(No fixes yet)*

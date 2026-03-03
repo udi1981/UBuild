@@ -8,3 +8,10 @@ export { Card } from "./card";
 export { Alert } from "./alert";
 export { Separator } from "./separator";
 export { Spinner } from "./spinner";
+export { Avatar } from "./avatar";
+export { Sidebar } from "./sidebar";
+export { Header } from "./header";
+export { TabBar } from "./tab-bar";
+export { Breadcrumbs } from "./breadcrumbs";
+
+export type { NavItem } from "./sidebar";

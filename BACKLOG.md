@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.1.3 completed)
+> Last updated: 2026-03-03 (Phase 1.2.1 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -81,14 +81,20 @@
 
 ## 🔥 Phase 1.2 — Dashboard & Sites
 
-### [TODO] 1.2.1 — Dashboard Layout
+### [DONE] 1.2.1 — Dashboard Layout ✅
 - Priority: **HIGH**
-- Sidebar navigation (desktop: always visible, mobile: hidden behind hamburger)
-- Bottom tab bar (mobile only: 5 main tabs)
-- Top header: site selector, user avatar, notifications bell
-- Main content area with breadcrumbs
-- Dark theme, RTL, responsive
-- **Files:** apps/web/app/(dashboard)/layout.tsx, packages/ui/layout/
+- 5 new UI components: Avatar, Sidebar, Header, TabBar, Breadcrumbs
+- Sidebar: desktop always-visible (w-64), mobile slide-in drawer from end (RTL)
+- Header: hamburger (mobile), breadcrumbs slot, notification bell, user avatar
+- Bottom tab bar: 5 tabs (Home, Sites, Commerce, Analytics, Settings), mobile only
+- Breadcrumbs: RTL-aware with ChevronLeft separators
+- Dashboard layout with auth guard (redirects to /login if unauthenticated)
+- Dashboard home placeholder page
+- Added DOM types to packages/ui tsconfig for client components
+- Added lucide-react to apps/web dependencies
+- Dark theme, RTL, responsive (mobile-first)
+- **Files:** packages/ui/src/{avatar,sidebar,header,tab-bar,breadcrumbs}.tsx, apps/web/src/app/(dashboard)/layout.tsx, apps/web/src/app/(dashboard)/page.tsx
+- **Completed:** 2026-03-03 (build verified)
 
 ### [TODO] 1.2.2 — Dashboard Home Page
 - Priority: **HIGH**
