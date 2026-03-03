@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.2.3 completed)
+> Last updated: 2026-03-03 (Phase 1.3.1 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -126,17 +126,18 @@
 
 ## 🔥 Phase 1.3 — Visual Editor
 
-### [TODO] 1.3.1 — Block Type System
+### [DONE] 1.3.1 — Block Type System ✅
 - Priority: **CRITICAL**
-- Define block types in packages/types:
-  - Section, Row, Column (layout)
-  - Heading, Paragraph, RichText (text)
-  - Image, Video, Icon (media)
-  - Button, Link (interactive)
-  - Spacer, Divider (utility)
-  - Hero, Features, Testimonials, FAQ, CTA, Footer (composite)
-- Each block: `{ id, type, props, children, styles, responsiveStyles }`
-- **Files:** packages/types/blocks.ts
+- 18 block types with strongly-typed discriminated union props
+- BlockType union matching Postgres block_type enum exactly
+- Typed props for each block: layout (Section, Row, Column), text (Heading, Paragraph, RichText), media (Image, Video, Icon), interactive (Button, Link), utility (Spacer, Divider), composite (Hero, Features, Testimonials, FAQ, CTA, Footer)
+- Block<T> generic type with discriminated props via BlockPropsMap
+- StyleMap and ResponsiveStyles types for styling
+- BlockCategory grouping and BLOCK_CATEGORIES constant
+- BLOCK_REGISTRY with metadata: Hebrew/English labels, lucide icons, allowsChildren flag
+- Helper types: FeatureItem, TestimonialItem, FaqItem, FooterLink, SocialLink
+- **Files:** packages/types/src/blocks.ts, packages/types/src/index.ts
+- **Completed:** 2026-03-03 (build verified)
 
 ### [TODO] 1.3.2 — Editor Canvas
 - Priority: **CRITICAL**
