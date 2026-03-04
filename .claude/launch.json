@@ -11,14 +11,16 @@
     {
       "name": "api",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/turbo/bin/turbo", "dev", "--filter", "@ubuilder/api"],
-      "port": 8787
+      "runtimeArgs": ["--env-file=../../.env", "node_modules/tsx/dist/cli.mjs", "watch", "src/index.ts"],
+      "port": 8787,
+      "cwd": "apps/api"
     },
     {
       "name": "renderer",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/turbo/bin/turbo", "dev", "--filter", "@ubuilder/renderer"],
-      "port": 3002
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--port", "3002"],
+      "port": 3002,
+      "cwd": "apps/renderer"
     }
   ]
 }

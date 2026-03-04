@@ -36,19 +36,24 @@ const RegisterPage = () => {
 
     setLoading(true);
 
-    const result = await authClient.signUp.email({
-      email,
-      password,
-      name,
-    });
+    try {
+      const result = await authClient.signUp.email({
+        email,
+        password,
+        name,
+      });
 
-    if (result.error) {
-      setError(result.error.message || "שגיאה ביצירת החשבון");
+      if (result.error) {
+        setError(result.error.message || "שגיאה ביצירת החשבון");
+        setLoading(false);
+        return;
+      }
+
+      router.push("/");
+    } catch {
+      setError("לא ניתן להתחבר לשרת. נסה שוב מאוחר יותר.");
       setLoading(false);
-      return;
     }
-
-    router.push("/");
   };
 
   const handleGoogleSignUp = async () => {

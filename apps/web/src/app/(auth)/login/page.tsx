@@ -32,18 +32,23 @@ const LoginPage = () => {
       return;
     }
 
-    const result = await authClient.signIn.email({
-      email,
-      password,
-    });
+    try {
+      const result = await authClient.signIn.email({
+        email,
+        password,
+      });
 
-    if (result.error) {
-      setError(result.error.message || "שגיאה בהתחברות");
+      if (result.error) {
+        setError(result.error.message || "שגיאה בהתחברות");
+        setLoading(false);
+        return;
+      }
+
+      router.push("/");
+    } catch {
+      setError("לא ניתן להתחבר לשרת. נסה שוב מאוחר יותר.");
       setLoading(false);
-      return;
     }
-
-    router.push("/");
   };
 
   const handleGoogleLogin = async () => {
@@ -64,18 +69,23 @@ const LoginPage = () => {
       return;
     }
 
-    const result = await authClient.signIn.magicLink({
-      email: magicEmail,
-    });
+    try {
+      const result = await authClient.signIn.magicLink({
+        email: magicEmail,
+      });
 
-    if (result.error) {
-      setMagicError(result.error.message || "שגיאה בשליחת הקישור");
+      if (result.error) {
+        setMagicError(result.error.message || "שגיאה בשליחת הקישור");
+        setMagicLoading(false);
+        return;
+      }
+
+      setMagicSent(true);
       setMagicLoading(false);
-      return;
+    } catch {
+      setMagicError("לא ניתן להתחבר לשרת. נסה שוב מאוחר יותר.");
+      setMagicLoading(false);
     }
-
-    setMagicSent(true);
-    setMagicLoading(false);
   };
 
   return (

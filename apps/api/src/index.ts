@@ -7,10 +7,15 @@ import { sitesRoutes } from "./routes/sites.routes";
 const app = new Hono();
 
 // Auth-specific CORS — must be before the auth handler
+const trustedOrigins = [
+  process.env.BETTER_AUTH_URL || "http://localhost:3001",
+  "http://127.0.0.1:3001",
+];
+
 app.use(
   "/api/auth/*",
   cors({
-    origin: process.env.BETTER_AUTH_URL || "http://localhost:3001",
+    origin: (origin) => trustedOrigins.includes(origin) ? origin : trustedOrigins[0]!,
     allowHeaders: ["Content-Type", "Authorization"],
     allowMethods: ["POST", "GET", "OPTIONS"],
     exposeHeaders: ["Content-Length"],

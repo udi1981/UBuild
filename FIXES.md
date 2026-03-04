@@ -20,12 +20,39 @@
   **Root cause:** Better Auth docs may show shorthand but the actual type nests it under `advanced.database`
   **Date:** 2026-03-03
 
+- **Issue:** Drizzle adapter error `The model "users" was not found in the schema object` when signing up
+  **Fix:** Pass the full schema object (`schema`) instead of manually mapping singular keys (`{ user: schema.users, ... }`). With `usePlural: true`, Better Auth looks up plural keys (`users`, `sessions`, etc.) in the schema object.
+  **Root cause:** The schema mapping used singular keys (`user`, `session`, `account`, `verification`) but `usePlural: true` makes Better Auth look for plural keys matching the table names.
+  **Date:** 2026-03-04
+
+- **Issue:** `localhost` vs `127.0.0.1` origin mismatch causes CORS failures and "Invalid origin" errors
+  **Fix:** (1) In `auth-client.ts`, use `window.location.origin` in browser instead of hardcoded URL. (2) In `auth.ts`, add `"http://127.0.0.1:3001"` to `trustedOrigins`. (3) In `index.ts`, change CORS `origin` from string to function that checks an array of trusted origins.
+  **Root cause:** Browser on `127.0.0.1:3001` treats `localhost:3001` as a different origin. Both must be in trustedOrigins and CORS allowed origins.
+  **Date:** 2026-03-04
+
 ## Next.js App Router
 
 - **Issue:** Better Auth client with `baseURL: "/"` throws `BetterAuthError: Invalid base URL: /` during Next.js SSG prerendering
   **Fix:** Use absolute URL: `baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001"`
   **Root cause:** Relative URLs can't be resolved during SSG (no server context). `createAuthClient` needs an absolute URL.
   **Date:** 2026-03-03
+
+- **Issue:** Next.js App Router layout files exporting named components alongside `default` causes build error: `Property 'ComponentName' is incompatible with index signature`
+  **Fix:** Extract named components to separate files (e.g., `editor-keyboard-handler.tsx`). Layout files can only export `default` and specific metadata exports (`metadata`, `generateMetadata`, `generateStaticParams`).
+  **Root cause:** Next.js enforces strict type constraints on route files — named exports are treated as metadata and must match `{ [x: string]: never }`.
+  **Date:** 2026-03-03
+
+- **Issue:** `JSX.IntrinsicElements` causes `Cannot find namespace 'JSX'` in React 19 with Next.js 15
+  **Fix:** Use `React.ElementType` instead of `keyof JSX.IntrinsicElements` for dynamic tag rendering
+  **Root cause:** In React 19, the `JSX` global namespace was removed. Use `React.JSX.IntrinsicElements` or `React.ElementType` instead.
+  **Date:** 2026-03-03
+
+## Auth Pages
+
+- **Issue:** Auth pages (login/register) button stays in loading state forever when API server is unreachable; no error message shown
+  **Fix:** Wrap `authClient.signUp.email()`, `authClient.signIn.email()`, and `authClient.signIn.magicLink()` calls in try/catch to handle network errors gracefully
+  **Root cause:** When the Hono API server (port 8787) is not running, the fetch throws a network error. Without try/catch, the error is uncaught and `setLoading(false)` never runs.
+  **Date:** 2026-03-04
 
 ## TypeScript / Build
 

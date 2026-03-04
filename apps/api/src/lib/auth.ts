@@ -15,12 +15,7 @@ export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
     usePlural: true,
-    schema: {
-      user: schema.users,
-      session: schema.sessions,
-      account: schema.accounts,
-      verification: schema.verifications,
-    },
+    schema,
   }),
 
   /** Let PostgreSQL generate UUIDs via defaultRandom() */
@@ -65,9 +60,10 @@ export const auth = betterAuth({
     },
   },
 
-  /** Trusted frontend origins */
+  /** Trusted frontend origins (localhost + 127.0.0.1 for dev) */
   trustedOrigins: [
     process.env.BETTER_AUTH_URL || "http://localhost:3001",
+    "http://127.0.0.1:3001",
   ],
 
   /** Plugins */
