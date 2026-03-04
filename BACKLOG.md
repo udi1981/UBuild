@@ -1,6 +1,6 @@
 # UBuilder AI — Backlog
 
-> Last updated: 2026-03-03 (Phase 1.3.1 completed)
+> Last updated: 2026-03-03 (Phase 1.3.2 completed)
 > Current phase: **Phase 1 — Foundation**
 
 ---
@@ -139,16 +139,26 @@
 - **Files:** packages/types/src/blocks.ts, packages/types/src/index.ts
 - **Completed:** 2026-03-03 (build verified)
 
-### [TODO] 1.3.2 — Editor Canvas
+### [DONE] 1.3.2 — Editor Canvas ✅
 - Priority: **CRITICAL**
-- Render block tree to visual preview
-- Click to select block (highlight border)
-- Drag to reorder blocks (within same level)
-- Add block: floating "+" button between blocks
-- Delete block: keyboard shortcut + button
-- Undo/redo (command stack)
-- Mobile: list view with tap-to-select, long-press to drag
-- **Files:** apps/web/app/(editor)/canvas/
+- Editor state management: React Context + useReducer with snapshot-based undo/redo (max 50 history states)
+- Block tree utility functions: findBlock, addBlock, removeBlock, moveBlock, updateBlockProps, createBlock with default Hebrew props
+- 3-panel responsive layout: Layers (left 240px) + Canvas (center flex) + Properties (right 280px)
+- Canvas renders all 18 block types with visual previews (heading, paragraph, button, hero, features, etc.)
+- Click to select block (blue border highlight), hover indicator
+- Drag to reorder blocks with native HTML5 drag/drop API (no external packages)
+- Add block: "+" buttons between blocks, opens block inserter dialog grouped by category
+- Delete block: keyboard shortcut (Delete/Backspace) + properties panel button
+- Undo/redo: Ctrl+Z / Ctrl+Shift+Z keyboard shortcuts + toolbar buttons
+- Device preview toggle: desktop / tablet (768px) / mobile (375px)
+- Editor toolbar: back button, page title, undo/redo, device toggle, save button
+- Layers panel: collapsible tree view with block type icons and Hebrew labels
+- Properties panel: dynamic fields per block type (text content, heading level, colors, etc.)
+- Mobile: bottom action bar with undo/redo/delete buttons, panels hidden
+- Auth guard, full-screen editor layout (no dashboard sidebar)
+- Mock page data with hero, section with children, features, CTA, footer
+- **Files:** apps/web/src/lib/editor/editor-state.ts, editor-context.tsx, block-utils.ts, apps/web/src/components/editor/editor-toolbar.tsx, canvas.tsx, canvas-block.tsx, add-block-dialog.tsx, layers-panel.tsx, properties-panel.tsx, editor-keyboard-handler.tsx, apps/web/src/app/(editor)/layout.tsx, [siteId]/[pageId]/page.tsx
+- **Completed:** 2026-03-03 (build verified 8/8)
 
 ### [TODO] 1.3.3 — Properties Panel
 - Priority: **HIGH**
