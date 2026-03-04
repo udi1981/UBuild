@@ -42,7 +42,7 @@ const NewSitePage = () => {
         throw new Error(json.error || "שגיאה ביצירת האתר");
       }
 
-      router.push("/sites");
+      router.push(`/sites/${json.data.id}/pages`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "שגיאה ביצירת האתר. נסה שנית.");
     } finally {

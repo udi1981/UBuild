@@ -2,6 +2,7 @@ import { createApp } from "../lib/app";
 import { requireAuth } from "../middleware/auth";
 import { createDb } from "@ubuilder/db";
 import * as sitesService from "../services/sites.service";
+import * as pagesService from "../services/pages.service";
 
 const app = createApp();
 const db = createDb();
@@ -37,6 +38,14 @@ app.post("/", async (c) => {
   if (!result.ok) {
     return c.json({ ok: false, error: result.error }, 500);
   }
+
+  // Auto-create a default home page for the new site
+  await pagesService.createPage(db, result.data.id, userId, {
+    title: "עמוד ראשי",
+    slug: "home",
+    isHomePage: true,
+  });
+
   return c.json({ ok: true, data: result.data }, 201);
 });
 

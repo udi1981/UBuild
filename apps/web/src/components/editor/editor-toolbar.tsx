@@ -25,10 +25,12 @@ const deviceOrder: DevicePreview[] = ["desktop", "tablet", "mobile"];
 type EditorToolbarProps = {
   pageTitle?: string;
   siteId?: string;
+  onSave?: () => void | Promise<void>;
+  saving?: boolean;
 };
 
 /** Top toolbar: back, undo/redo, device preview, save */
-export const EditorToolbar = ({ pageTitle = "עמוד ללא כותרת", siteId }: EditorToolbarProps) => {
+export const EditorToolbar = ({ pageTitle = "עמוד ללא כותרת", siteId, onSave, saving }: EditorToolbarProps) => {
   const router = useRouter();
   const { state, dispatch, canUndo, canRedo } = useEditor();
 
@@ -37,12 +39,15 @@ export const EditorToolbar = ({ pageTitle = "עמוד ללא כותרת", siteId
       const confirmed = window.confirm("יש שינויים שלא נשמרו. לצאת בכל זאת?");
       if (!confirmed) return;
     }
-    router.push(siteId ? `/sites/${siteId}/settings` : "/sites");
+    router.push(siteId ? `/sites/${siteId}/pages` : "/sites");
   };
 
   const handleSave = () => {
-    // TODO: Save to API
-    dispatch({ type: "MARK_SAVED" });
+    if (onSave) {
+      onSave();
+    } else {
+      dispatch({ type: "MARK_SAVED" });
+    }
   };
 
   return (
@@ -116,9 +121,9 @@ export const EditorToolbar = ({ pageTitle = "עמוד ללא כותרת", siteId
       )}
 
       {/* Save */}
-      <Button size="sm" onClick={handleSave}>
+      <Button size="sm" onClick={handleSave} loading={saving} disabled={saving}>
         <Save size={14} />
-        <span>שמור</span>
+        <span>{saving ? "שומר..." : "שמור"}</span>
       </Button>
     </div>
   );

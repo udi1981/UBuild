@@ -8,6 +8,7 @@ import {
   Settings as SettingsIcon,
   Trash2,
   ExternalLink,
+  FileText,
 } from "lucide-react";
 import { Button, Card, Alert, Spinner } from "@ubuilder/ui";
 
@@ -231,11 +232,18 @@ const SitesPage = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => router.push(`/sites/${site.id}/settings`)}
+                    onClick={() => router.push(`/sites/${site.id}/pages`)}
                     className="flex-1"
                   >
+                    <FileText size={14} />
+                    <span>עמודים</span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => router.push(`/sites/${site.id}/settings`)}
+                  >
                     <SettingsIcon size={14} />
-                    <span>הגדרות</span>
                   </Button>
                   <Button
                     variant="ghost"
