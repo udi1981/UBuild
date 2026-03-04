@@ -20,3 +20,12 @@ export type { BlockTemplateData } from "./blocks";
 
 // ---- Media ----
 export { media, mediaRelations } from "./media";
+
+// ---- Sessions (Better Auth) ----
+export { sessions, sessionsRelations } from "./sessions";
+
+// ---- Accounts (Better Auth) ----
+export { accounts, accountsRelations } from "./accounts";
+
+// ---- Verifications (Better Auth) ----
+export { verifications } from "./verification";

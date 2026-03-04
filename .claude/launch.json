@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--port", "3001"],
+      "port": 3001,
+      "cwd": "apps/web"
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--env-file=../../.env", "node_modules/tsx/dist/cli.mjs", "watch", "src/index.ts"],
+      "port": 8787,
+      "cwd": "apps/api"
+    },
+    {
+      "name": "renderer",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--port", "3002"],
+      "port": 3002,
+      "cwd": "apps/renderer"
+    }
+  ]
+}

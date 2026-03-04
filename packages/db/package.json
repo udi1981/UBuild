@@ -18,17 +18,17 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",
-    "drizzle-orm": "^0.38.0",
-    "@ubuilder/types": "workspace:*"
+    "@ubuilder/types": "workspace:*",
+    "drizzle-orm": "^0.45.1"
   },
   "devDependencies": {
-    "@ubuilder/config": "workspace:*",
-    "drizzle-kit": "^0.30.0",
-    "dotenv": "^16.4.0",
-    "@types/node": "^22.15.21",
-    "typescript": "^5.8.3",
     "@eslint/js": "^9.28.0",
-    "typescript-eslint": "^8.32.1",
-    "eslint": "^9.28.0"
+    "@types/node": "^22.15.21",
+    "@ubuilder/config": "workspace:*",
+    "dotenv": "^16.4.0",
+    "drizzle-kit": "^0.31.9",
+    "eslint": "^9.28.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
   }
 }
